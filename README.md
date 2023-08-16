@@ -5,5 +5,5 @@ To execute the .cpp file run the command:
 `g++ -o out Param_order_ord.cpp`
 Then to launch the simulation run for example
 `./out test 50 50 1.8 1 1 1 1 10 0.0001 100 0 1 1 1234 0.5 1 1 1 0.1 0.001 0.1 0.1 0.1`
-The inputs are: output Lx Ly rho T mu_r mu_phi mu_theta omega dt totaltime initial_time interval_record interval_snap seed radius amplitude_r amplitude_phi amplitude_theta lambda dist drho dx dphi dtheta
+The inputs are: output Lx Ly rho T mu_r mu_phi mu_theta omega dt totaltime initial_time interval_record interval_snap seed radius amplitude_r epsilon amplitude_theta lambda dist drho dx dphi dtheta
 
