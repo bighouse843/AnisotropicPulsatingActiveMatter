@@ -5,7 +5,9 @@ using DelimitedFiles
 using Plots
 using LaTeXStrings
 
-addprocs(8)
+#In this code we visualize the results of the simulations performed using the C++ code. This code is meant to be run on multiple threads. 
+
+addprocs(8) #8 is the number of threads and it cand be changed
 @everywhere begin
     using PyCall
     using PyPlot
@@ -138,10 +140,12 @@ addprocs(8)
     end
 
 end
-foreach(rm, filter(endswith(".png"), readdir())) #cancel old frames
+#foreach(rm, filter(endswith(".png"), readdir())) #cancel old frames
 lista_file = filter(x->occursin("test_snap_",x), readdir())
 nb_snaps = length(lista_file)
-@showprogress pmap(crea_frame_fase, range(1,nb_snaps-1))
+@showprogress pmap(crea_frame_fase, range(1,nb_snaps-1))#here the functions presented above can be called. 
+#crea_frame_fase creates the visualization of the phase of the particles
+#crea_frame_orient creates the visualization of the orientation of the particles
 video_name = "rho_"*string(ρ)*"_eps_"*string(amp)
 @ffmpeg_env run(`$ffmpeg -framerate 25 -i %d.png -c:v libx264 -profile:v high -crf 20 -y -pix_fmt yuv420p $video_name.mp4`)
 
